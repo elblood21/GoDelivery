@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-retiro',
   templateUrl: './retiro.page.html',
   styleUrls: ['./retiro.page.scss'],
 })
-export class RetiroPage implements OnInit {
+export class RetiroPage {
 
-  constructor() { }
+  constructor(public navCtrl: NavController) {}
 
-  ngOnInit() {
+  abrirDetallesPedido() {
+    // Código para redirigir a la página de detalles del pedido
   }
 
+  volverPaginaAnterior() {
+    this.navCtrl.back();
+  }
 }
