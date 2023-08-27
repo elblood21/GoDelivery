@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NavController } from '@ionic/angular'; // Asegúrate de importar NavController
+import { NavController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -11,6 +11,7 @@ import { ToastController } from '@ionic/angular';
 export class DetallesPedidoPage implements OnInit {
   pedidoInfo: any = {}; // Almacena la información del pedido
   horaCarga: string = ''; // Almacena la hora de carga del pedido
+  estadoPedido: string = 'Pendiente de retiro'; // Estado inicial del pedido
 
   constructor(
     private route: ActivatedRoute,
@@ -31,15 +32,17 @@ export class DetallesPedidoPage implements OnInit {
 
   async mostrarMensaje() {
     const toast = await this.toastController.create({
-      message: 'Pedido cargado para retiro',
+      message: 'Pedido cargado correctamente',
       duration: 2000, // Duración en milisegundos
       position: 'bottom' // Posición en la que aparecerá el mensaje
     });
     toast.present();
+
+    // Cambiar el estado del pedido a "Retirado" después de realizar el retiro
+    this.estadoPedido = 'Retirado';
   }
 
   volverPaginaAnterior() {
     this.navCtrl.back();
   }
 }
-
