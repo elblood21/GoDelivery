@@ -24,6 +24,10 @@ const routes: Routes = [
         loadChildren: () => import('../entrega/detalle-entrega/detalle-entrega.module').then( m => m.DetalleEntregaPageModule)
       },
       {
+        path: 'confirmacion-entrega',
+        loadChildren: () => import('../entrega/confirmacion-entrega/confirmacion-entrega.module').then( m => m.ConfirmacionEntregaPageModule)
+      },
+      {
         path: 'perfil',
         loadChildren: () => import('../perfil/perfil.module').then( m => m.PerfilPageModule)
       },
