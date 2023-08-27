@@ -34,7 +34,7 @@ ion-content {
 ion-card {
     --ion-background-color: #000000; /* Cambia el color según tus preferencias */
     width: auto; /* Ajusta el ancho según tus preferencias */
-    height: 200px; /* Ajusta el alto según tus preferencias */
+    height: auto; /* Ajusta el alto según tus preferencias */
   }
 
 /* Cambia el color del texto en toda la ion-card */
@@ -46,5 +46,13 @@ ion-card {
   }
 }
 
+.volver-button {
+  color: #ffffff;  // Cambia el color del texto del botón
+  background-color: #ff6624;  // Cambia el color de fondo del botón
+  font-size: 16px;  // Cambia el tamaño de fuente del botón
+  border-radius: 10px;  // Agrega esquinas redondeadas al botón
+  padding: 10px 20px;  // Ajusta el espaciado interno del botón
+  width: 100%;  // Ajusta el ancho del botón
+}
 
 
