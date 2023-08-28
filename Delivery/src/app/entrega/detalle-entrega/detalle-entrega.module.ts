@@ -8,12 +8,15 @@ import { DetalleEntregaPageRoutingModule } from './detalle-entrega-routing.modul
 
 import { DetalleEntregaPage } from './detalle-entrega.page';
 
+import {SharedModule} from '../../shared/shared.module'
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetalleEntregaPageRoutingModule
+    DetalleEntregaPageRoutingModule,
+    SharedModule
   ],
   declarations: [DetalleEntregaPage]
 })

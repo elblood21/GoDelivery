@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <ion-header>
   <ion-toolbar>
     <ion-title>Detalle de Entrega</ion-title>
@@ -6,14 +8,23 @@
 
 <ion-content class="ion-padding">
   <ion-card>
-    <ion-card-header>
-      <ion-card-title>Información de la Entrega</ion-card-title>
-    </ion-card-header>
     <ion-card-content>
+      <div>
       <p><strong>Nombre del Cliente:</strong> </p>
+    </div>
+    <div>
       <p><strong>ID de Entrega:</strong> </p>
+    </div>
       <p><strong>Dirección:</strong> </p>
+      <div>
       <p><strong>Cantidad de Bultos:</strong></p>
+    </div>
+      <ion-label class="label-inline">Estado:</ion-label>
+      <ion-select class="select-inline">
+        <ion-select-option value="en-retiro">En Retiro</ion-select-option>
+        <ion-select-option value="en-ruta">En Ruta</ion-select-option>
+        <ion-select-option value="entregado">Entregado</ion-select-option>
+      </ion-select>
     </ion-card-content>
   </ion-card>
 
@@ -23,6 +34,8 @@
     <ion-button >Mapa</ion-button>
   </div>
 
+  <div class="button-confirmar">
   <ion-button [routerLink]="['/tabs/confirmacion-entrega']">Confirmar Entrega</ion-button>
+</div>
 
 </ion-content>

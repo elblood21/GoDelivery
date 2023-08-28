@@ -8,12 +8,15 @@ import { ConfirmacionEntregaPageRoutingModule } from './confirmacion-entrega-rou
 
 import { ConfirmacionEntregaPage } from './confirmacion-entrega.page';
 
+import {SharedModule} from '../../shared/shared.module'
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ConfirmacionEntregaPageRoutingModule
+    ConfirmacionEntregaPageRoutingModule,
+    SharedModule,
   ],
   declarations: [ConfirmacionEntregaPage]
 })
