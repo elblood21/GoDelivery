@@ -20,7 +20,7 @@ const routes: Routes = [
         loadChildren: () => import('../entrega/entrega.module').then( m => m.EntregaPageModule)
       },
       {
-        path: 'detalle-entrega',
+        path: 'detalle-entrega/:id',
         loadChildren: () => import('../entrega/detalle-entrega/detalle-entrega.module').then( m => m.DetalleEntregaPageModule)
       },
       {

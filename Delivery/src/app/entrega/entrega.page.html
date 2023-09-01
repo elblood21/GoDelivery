@@ -1,13 +1,15 @@
 
   <ion-content>
-    <div class="cuadro">
-      <ion-card class="card-content" [routerLink]="['/tabs/detalle-entrega']">
+
+  
+    <div class="cuadro" *ngFor="let e of entregas">
+      <ion-card class="card-content" [routerLink]="['/tabs/detalle-entrega', e.id]">
         <ion-card-content>
-          <p>ID: 43534</p>
-          <p>Dirección : blbablbla 13123</p>
-          <p>Comuna: Jjeje</p>
-          <p>Nombre Cliente: José Perez</p>
-          <p>Estado: En Ruta</p>
+          <p>ID : {{e.id}}</p>
+          <p>Dirección : {{e.direccion}}</p>
+          <p>Comuna : {{e.comuna}}</p>
+          <p>Nombre Cliente : {{e.nombre_cliente}}</p>
+          <p>Estado : {{e.estado}}</p>
         </ion-card-content>
       </ion-card>
     </div>
