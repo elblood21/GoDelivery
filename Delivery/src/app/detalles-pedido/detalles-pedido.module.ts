@@ -8,12 +8,15 @@ import { DetallesPedidoPageRoutingModule } from './detalles-pedido-routing.modul
 
 import { DetallesPedidoPage } from './detalles-pedido.page';
 
+import {SharedModule} from '../shared/shared.module'
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetallesPedidoPageRoutingModule
+    DetallesPedidoPageRoutingModule,
+    SharedModule
   ],
   declarations: [DetallesPedidoPage]
 })
