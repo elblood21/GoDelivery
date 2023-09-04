@@ -1,0 +1,27 @@
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .action-button {
+    width: calc(33.33% - 10px);
+  }
+
+.button-confirmar{
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.label-inline {
+  display: inline-block;
+  margin-right: 10px; /* Ajusta el margen derecho según tu preferencia */
+  color: white;
+}
+
+.select-inline {
+  display: inline-block;
+  width: calc(100% - 100px); /* Ajusta el ancho según tu preferencia */
+  color: white;
+}
