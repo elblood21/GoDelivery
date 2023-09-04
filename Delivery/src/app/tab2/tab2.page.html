@@ -1,17 +1,31 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <div class="contenedor">
+    <h1 style="color: white!important;margin-top: 1rem;margin-bottom: 4rem;">Inicio</h1>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <!-- ESTO SE MUESTRA SI EL LOADING ES FALSE ( PARA ANTES QUE CARGE LA INFORMACION ) -->
+    <div *ngIf="loading">
+      <ion-skeleton-text *ngFor="let i of [1,2,3,4]" style="padding: 1.4rem 0rem;border-radius: 0.3rem;margin-bottom: 1rem;" [animated]="true" ></ion-skeleton-text>
+    </div>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <!-- ESTO SE MUESTRA SI EL LOADING ES TRUE ( CUANDO LA INFORMACION ESTE CARGADA ) -->
+    <div *ngIf="!loading" class="estadisticas">
+
+      <div class="w-100 estadisticas-card">
+        <p class="text-align-center">Retiros pendientes: 0</p>
+      </div>
+
+      <div class="w-100 estadisticas-card">
+        <p class="text-align-center">Retiros realizados: 0</p>
+      </div>
+
+      <div class="w-100 estadisticas-card">
+        <p class="text-align-center">Entregas pendientes: 0</p>
+      </div>
+
+      <div class="w-100 estadisticas-card">
+        <p class="text-align-center">Entregas realizadas: 10</p>
+      </div>
+  
+    </div>
+  </div>
 </ion-content>

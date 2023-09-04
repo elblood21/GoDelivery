@@ -1,0 +1,60 @@
+<ion-content [fullscreen]="true">
+  <div class="contenedor">
+    <h1 style="color:white!important;margin-top:1rem;">Retiros</h1>
+
+  </div>
+
+  <div *ngIf="loading">
+
+    <ion-card *ngFor="let i of [1,2,3]" style="margin:0!important;margin-bottom:1rem!important;" >
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="4" style="padding-left: 0rem;padding-right: 0rem;display:flex;">
+              <ion-skeleton-text [animated]="true" style="width:100%;height:100%;object-fit:cover;margin:auto;"></ion-skeleton-text>
+            </ion-col>
+            <ion-col size="8" style="padding-left:1rem;">
+              <ion-skeleton-text style="height:1rem;width:8rem;" [animated]="true"></ion-skeleton-text>
+              <p style="margin-top:0.5rem;">
+                <br/>
+                <ion-skeleton-text style="height:0.7rem;width:4rem;" [animated]="true"></ion-skeleton-text>
+                 <ion-skeleton-text style="height:0.7rem;width:7rem;" [animated]="true"></ion-skeleton-text>
+              </p>
+  
+              <p style="margin-top:0.5rem;">
+                <br/>
+                <ion-skeleton-text style="height:0.7rem;width:4rem;" [animated]="true"></ion-skeleton-text>
+                 <ion-skeleton-text style="height:0.7rem;width:7rem;" [animated]="true"></ion-skeleton-text>
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+  
+    </ion-card>
+
+  </div>
+
+  <div *ngIf="!loading">
+
+    <ion-card *ngFor="let pedido of pedidos; let i = index" style="margin:0!important;margin-bottom:1rem!important;" (click)="abrirDetallesPedido(i)">
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="4" style="padding-left: 0rem;padding-right: 0rem;display:flex;">
+              <img [src]="pedido.logo" style="width:100%;height:100%;object-fit:cover;margin:auto;" />
+            </ion-col>
+            <ion-col size="8" style="padding-left:1rem;">
+              <ion-card-title>{{pedido.tienda}}</ion-card-title>
+              <p style="margin-top:0.5rem;"><b>Dirección retiro:</b> <br/> {{pedido.direccionRetiro}}</p>
+  
+              <p style="margin-top:0.5rem;"><b>Pedidos a retirar:</b> <br/> {{pedido.cantRetiros}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+  
+    </ion-card>
+
+  </div>
+</ion-content>
