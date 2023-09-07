@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-perfil',
@@ -7,11 +8,23 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
+  username: string = '';
+  usercorreo: string = '';
 
-  constructor(public alertControler: AlertController) { }
+  constructor(public alertControler: AlertController,private navCtrl: NavController) { }
+  
 
   ngOnInit() {
+
+    // Recupera el dato de 'username' del LocalStorage
+    const userDataString = localStorage.getItem('userData');
+    if (userDataString !== null) {
+      const userData = JSON.parse(userDataString);
+      this.username = userData.username;
+      this.usercorreo = userData.email;
+    }
   }
+
 
   async presentAlert(){
     const alert = await this.alertControler.create({
@@ -30,11 +43,12 @@ export class PerfilPage implements OnInit {
           
           handler: (blah) => {
             console.log('Cerrar sesión');
+            localStorage.removeItem('userData');
+            this.navCtrl.navigateForward('/login');
           }
         }
       ]
     });
-
     await alert.present();
   }
 }
