@@ -1,0 +1,34 @@
+<ion-content [fullscreen]="true" style="--background:#252525">
+
+  <div class="contenedor">
+    <h1 style="margin-bottom:2rem;">Crear cuenta</h1>
+  
+    <ion-item class="input-item">
+      <ion-input [(ngModel)]="correo" name="correo" label="Correo electronico" labelPlacement="floating" placeholder="example@email.com"></ion-input>
+    </ion-item>
+  
+    <ion-item class="input-item">
+      <ion-input [(ngModel)]="contrasena" name="contrasena" class="has-right-icon-input" type="{{ (contrasenaVisible ? 'text' : 'password') }}" label="Contraseña" labelPlacement="floating" placeholder="******">
+      </ion-input>
+      <ion-icon (click)="showContrasena(true)" class="right-icon-input" *ngIf="!contrasenaVisible" name="eye"></ion-icon>
+      <ion-icon (click)="showContrasena(false)" class="right-icon-input" *ngIf="contrasenaVisible" name="eye-off"></ion-icon>
+    </ion-item>
+
+    <ion-item class="input-item">
+      <ion-input [(ngModel)]="verifContrasena" name="verifContrasena" class="has-right-icon-input" type="{{ (verifContrasenaVisible ? 'text' : 'password') }}" label="Verificar contraseña" labelPlacement="floating" placeholder="******">
+      </ion-input>
+      <ion-icon (click)="showVerifContrasena(true)" class="right-icon-input" *ngIf="!verifContrasenaVisible" name="eye"></ion-icon>
+      <ion-icon (click)="showVerifContrasena(false)" class="right-icon-input" *ngIf="verifContrasenaVisible" name="eye-off"></ion-icon>
+    </ion-item>
+
+    <div class="w-100" style="margin-top:2rem;">
+      <ion-checkbox labelPlacement="end">Acepto los <span style="color:#f03b31!important">Terminos de uso</span> y <br/><span style="color:#f03b31!important">Politica de privacidad</span></ion-checkbox>
+    </div>
+  
+    <ion-button class="w-100" style="margin-top:2rem;">Crear</ion-button>
+
+    <p class="w-100 text-align-center" style="margin-top:2rem;">ya tienes una cuenta? <span routerLink="/login" style="color:#f03b31!important">Ingresa</span></p>
+
+  </div>
+  
+</ion-content>

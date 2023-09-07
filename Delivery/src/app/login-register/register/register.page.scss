@@ -1,0 +1,48 @@
+/* Estilo para el contenedor principal */
+.contenedor {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Estilo para el encabezado */
+  .contenedor h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Estilo para los elementos de entrada de texto */
+  .input-item {
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo para el ícono de ojo (mostrar/ocultar contraseña) */
+  .right-icon-input {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  /* Estilo para el botón */
+  .w-100 {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  /* Estilo para el enlace de inicio de sesión */
+  .text-align-center {
+    text-align: center;
+  }
+  
+  /* Estilo para el enlace de inicio de sesión con color personalizado */
+  .text-align-center a {
+    color: #f03b31!important;
+    text-decoration: underline;
+  }
