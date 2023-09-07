@@ -4,6 +4,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
@@ -14,8 +19,8 @@ const routes: Routes = [
     path: 'detalles-pedido',
     loadChildren: () => import('./detalles-pedido/detalles-pedido.module').then( m => m.DetallesPedidoPageModule)
   },
-
 ];
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
