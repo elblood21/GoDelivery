@@ -1,13 +1,7 @@
-/* Estilo para el encabezado */
-ion-header {
-  background-color: #3880ff; /* Color de fondo del encabezado */
-  color: #fff; /* Color del texto en el encabezado */
-}
 
 /* Estilo para el contenido */
 ion-content {
   --ion-background-color: #f4f4f4; /* Color de fondo del contenido */
-  padding: 20px; /* Espaciado interior */
 }
 
 /* Estilo para los campos de entrada */
@@ -15,6 +9,7 @@ ion-input {
   border: 1px solid #ccc; /* Borde de los campos de entrada */
   border-radius: 5px; /* Bordes redondeados */
   margin-bottom: 15px; /* Espacio entre campos de entrada */
+  margin-top: 30px;
 }
 
 /* Estilo para el botón de registro */
