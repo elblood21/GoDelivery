@@ -1,31 +1,24 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>Retiro</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">retiro</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+<ion-content>
   <!-- Card contenedora-->
-
-  <ion-card>
+  <ion-card *ngFor="let r of retiros">
     <ion-card-header>
-      <ion-card-title>PC Factory</ion-card-title>
-      <ion-card-subtitle>Dirección retiro:</ion-card-subtitle>
+      <ion-card-title>{{r.nombre_tienda}}</ion-card-title>
+      <ion-card-subtitle>Dirección retiro: {{r.direccion_tienda}}</ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content>
-    Pedidos a retirar:
+    Pedidos a retirar: {{r.numero_bultos}}
     </ion-card-content>
   
     <ion-footer>
-      <ion-button fill="clear" (click)="abrirDetallesPedido()" class="abrir-button">Abrir</ion-button>
-    </ion-footer>    
+      <ion-button fill="clear" class="abrir-button" [routerLink]="['/tabs/detalles-pedido']" (click)="goToDetalleEntregaPage(r)">Abrir</ion-button>
+    </ion-footer>
 
   </ion-card>
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-entrega',
@@ -7,29 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntregaPage implements OnInit {
 
-  public entregas = [
-    {
-      id: '10',
-      direccion: 'Dos poniente',
-      numero: '4358',
-      comuna: 'Quilicura',
-      nombre_cliente: 'José Azul',
-      estado: 'En ruta'
+  entrega: any;
 
-    },
-    {
-      id: '20',
-      direccion: 'Camino al cerezo',
-      numero: '2368',
-      comuna: 'Peñalolen',
-      nombre_cliente: 'Rodrigo Bueno',
-      estado: 'En ruta'
-    }
-  ]
+  constructor(private navCtrl: NavController,private route: ActivatedRoute) { }
 
-  constructor() { }
-
-  ngOnInit() {
+  goToDetalleEntregaPage(entrega: any) {
+    this.navCtrl.navigateForward(['/tabs/detalle-entrega'], {
+      queryParams: { entrega: JSON.stringify(entrega) }
+    });
+    console.log(entrega);
   }
 
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      const entregaParam = params['retiro']; // Cambiamos el nombre aquí
+      if (entregaParam) {
+        this.entrega = JSON.parse(entregaParam); // Almacenamos en una variable llamada "entrega"
+        console.log(this.entrega); // Mostramos "entrega" en la consola
+      }
+    });
+}
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-detalle-entrega',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetalleEntregaPage implements OnInit {
 
-  constructor() { }
+  entrega: any;
 
-  ngOnInit() {
+  constructor(private route: ActivatedRoute) {
   }
 
+ngOnInit() {
+  this.route.queryParams.subscribe(params => {
+    const entregaParam = params['entrega'];
+    if (entregaParam) {
+      this.entrega = JSON.parse(entregaParam);
+      console.log(this.entrega)
+    }
+  });
+}
 }

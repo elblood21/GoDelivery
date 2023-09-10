@@ -9,7 +9,9 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./detalles-pedido.page.scss'],
 })
 export class DetallesPedidoPage implements OnInit {
-  pedidoInfo: any = {}; // Almacena la información del pedido
+
+
+  retiro: any;
   horaCarga: string = ''; // Almacena la hora de carga del pedido
   estadoPedido: string = 'Pendiente de retiro'; // Estado inicial del pedido
 
@@ -19,17 +21,26 @@ export class DetallesPedidoPage implements OnInit {
     private toastController: ToastController
   ) {}
 
-  ngOnInit() {
-    // Obtén los parámetros de la URL (si estás pasando información a través de la URL)
-    this.route.queryParams.subscribe(params => {
-      this.pedidoInfo = JSON.parse(params['pedidoInfo']);
-    });
 
-    // Obtén la hora actual
+  ngOnInit() {
+
+      this.route.queryParams.subscribe(params => {
+        const retiroParam = params['retiro'];
+        if (retiroParam) {
+          this.retiro = JSON.parse(retiroParam);
+          console.log(this.retiro)
+        }
+      });
+          // Obtén la hora actual
     const now = new Date();
     this.horaCarga = now.toLocaleTimeString(); // Puedes ajustar el formato de la hora según tus preferencias
   }
-
+  goToentrega(retiro: any) {
+    this.navCtrl.navigateRoot(['/tabs/entrega'], {
+      queryParams: { retiro: JSON.stringify(retiro) }
+    });
+    console.log(retiro)
+  }
   async mostrarMensaje() {
     const toast = await this.toastController.create({
       message: 'Pedido cargado correctamente',
@@ -40,6 +51,7 @@ export class DetallesPedidoPage implements OnInit {
 
     // Cambiar el estado del pedido a "Retirado" después de realizar el retiro
     this.estadoPedido = 'Retirado';
+
   }
 
   volverPaginaAnterior() {

@@ -1,28 +1,27 @@
-<app-header></app-header>
-
 <ion-header>
   <ion-toolbar>
+    <app-header></app-header>
     <ion-title>Detalle de Entrega</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card style="background-color: black;">
+  <ion-card>
     <ion-card-content>
       <div>
-      <p><strong>Nombre del Cliente:</strong> </p>
+      <p><strong>Nombre del Cliente: {{entrega.nombre_cliente}}</strong> </p>
     </div>
     <div>
-      <p><strong>ID de Entrega:</strong> </p>
+      <p><strong>ID de Entrega: {{entrega.id}}</strong> </p>
     </div>
-      <p><strong>Dirección:</strong> </p>
+      <p><strong>Dirección:{{entrega.direccion}}, {{entrega.comuna}} </strong> </p>
       <div>
-      <p><strong>Cantidad de Bultos:</strong></p>
+      <p><strong>Cantidad de Bultos: {{entrega.numero_bultos}}</strong></p>
     </div>
       <ion-label class="label-inline">Estado:</ion-label>
       <ion-select class="select-inline">
         <ion-select-option value="en-retiro">En Retiro</ion-select-option>
-        <ion-select-option value="en-ruta">En Ruta</ion-select-option>
+        <ion-select-option deafult value="en-ruta">En Ruta</ion-select-option>
         <ion-select-option value="entregado">Entregado</ion-select-option>
       </ion-select>
     </ion-card-content>

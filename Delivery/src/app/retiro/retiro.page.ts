@@ -8,26 +8,45 @@ import { NavController } from '@ionic/angular';
 })
 export class RetiroPage {
 
+  public retiros : any [] = [
+    {
+      id: '10',
+      direccion: 'Dos poniente',
+      numero: '4358',
+      comuna: 'Quilicura',
+      nombre_cliente: 'José Azul',
+      estado: 'En ruta',
+      nombre_tienda : 'Pc Factory',
+      direccion_tienda : 'Av. Las Condes 7537',
+      comuna_tienda : 'Las condes',
+      numero_bultos : '2',
+
+    },
+    {
+      id: '20',
+      direccion: 'Camino al cerezo',
+      numero: '2368',
+      comuna: 'Peñalolen',
+      nombre_cliente: 'Rodrigo Bueno',
+      estado: 'En ruta',
+      nombre_tienda : 'Sp Digital',
+      direccion_tienda : 'Padre Mariano 356',
+      comuna_tienda : 'Providencia',
+      numero_bultos : '3',
+    }
+  ]
+
   constructor(public navCtrl: NavController) {}
 
-  abrirDetallesPedido() {
-    const pedidoInfo = {
-      nombreTienda: 'PC Factory',
-      direccionRetiro: 'Dirección de retiro',
-      cliente: 'Nombre del cliente',
-      id: 'ID del pedido',
-      bultos: 'Número de bultos',
-    };
-  
-    this.navCtrl.navigateForward(['/detalles-pedido'], {
-      queryParams: {
-        pedidoInfo: JSON.stringify(pedidoInfo),
-      },
-    });
+  ngOnInit() {
   }
 
-  volverPaginaAnterior() {
-    this.navCtrl.back();
+  goToDetalleEntregaPage(retiro: any) {
+    this.navCtrl.navigateForward(['/tabs/detalles-pedido'], {
+      queryParams: { retiro: JSON.stringify(retiro) }
+    });
+    console.log(retiro);
   }
+
 }
 

@@ -13,7 +13,7 @@ import { EntregaPage } from './entrega.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    EntregaPageRoutingModule
+    EntregaPageRoutingModule,
   ],
   declarations: [EntregaPage]
 })

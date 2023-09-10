@@ -16,11 +16,15 @@ const routes: Routes = [
         loadChildren: () => import('../retiro/retiro.module').then( m => m.RetiroPageModule)
       },
       {
+        path: 'detalles-pedido',
+        loadChildren: () => import('../retiro/detalles-pedido/detalles-pedido.module').then( m => m.DetallesPedidoPageModule)
+      },
+      {
         path: 'entrega',
         loadChildren: () => import('../entrega/entrega.module').then( m => m.EntregaPageModule)
       },
       {
-        path: 'detalle-entrega/:id',
+        path: 'detalle-entrega',
         loadChildren: () => import('../entrega/detalle-entrega/detalle-entrega.module').then( m => m.DetalleEntregaPageModule)
       },
       {

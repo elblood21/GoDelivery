@@ -1,14 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Entrega</ion-title>
+  </ion-toolbar>
+</ion-header>
 
   <ion-content>
 
-    <div class="cuadro" *ngFor="let e of entregas">
-      <ion-card class="card-content" [routerLink]="['/tabs/detalle-entrega', e.id]">
+    <div class="cuadro">
+      <ion-card class="card-content" [routerLink]="['/tabs/detalle-entrega']" (click)="goToDetalleEntregaPage(entrega)">
         <ion-card-content>
-          <p>ID : {{e.id}}</p>
-          <p>Dirección : {{e.direccion}}</p>
-          <p>Comuna : {{e.comuna}}</p>
-          <p>Nombre Cliente : {{e.nombre_cliente}}</p>
-          <p>Estado : {{e.estado}}</p>
+          <p>ID : {{entrega.id}}</p>
+          <p>Dirección : {{entrega.direccion}}</p>
+          <p>Comuna : {{entrega.comuna}}</p>
+          <p>Nombre Cliente : {{entrega.nombre_cliente}}</p>
+          <p>Estado : {{entrega.estado}}</p>
         </ion-card-content>
       </ion-card>
     </div>
