@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { ObjetoService } from '../../service/objeto.service';
 
 @Component({
   selector: 'app-detalles-pedido',
@@ -9,49 +10,38 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./detalles-pedido.page.scss'],
 })
 export class DetallesPedidoPage implements OnInit {
-
-
-  retiro: any;
-  horaCarga: string = ''; // Almacena la hora de carga del pedido
-  estadoPedido: string = 'Pendiente de retiro'; // Estado inicial del pedido
+  
+  retiro: any ;
+  horaCarga: string = '0';
 
   constructor(
+    private objetoService : ObjetoService,
     private route: ActivatedRoute,
-    private navCtrl: NavController, // Agrega NavController aquí
-    private toastController: ToastController
+    private navCtrl: NavController,
   ) {}
 
-
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.retiro = this.objetoService.obtenerRetirosEntregaDetalle(id);
+      console.log(this.retiro)
+    } else {
+      // Manejar el caso en el que 'id' es null, por ejemplo, mostrar un mensaje de error o redirigir a otra página.
+    }
+    console.log(this.retiro.estado_pedido)
 
-      this.route.queryParams.subscribe(params => {
-        const retiroParam = params['retiro'];
-        if (retiroParam) {
-          this.retiro = JSON.parse(retiroParam);
-          console.log(this.retiro)
-        }
-      });
-          // Obtén la hora actual
     const now = new Date();
     this.horaCarga = now.toLocaleTimeString(); // Puedes ajustar el formato de la hora según tus preferencias
   }
-  goToentrega(retiro: any) {
-    this.navCtrl.navigateRoot(['/tabs/entrega'], {
-      queryParams: { retiro: JSON.stringify(retiro) }
-    });
-    console.log(retiro)
-  }
-  async mostrarMensaje() {
-    const toast = await this.toastController.create({
-      message: 'Pedido cargado correctamente',
-      duration: 2000, // Duración en milisegundos
-      position: 'bottom' // Posición en la que aparecerá el mensaje
-    });
-    toast.present();
 
-    // Cambiar el estado del pedido a "Retirado" después de realizar el retiro
-    this.estadoPedido = 'Retirado';
+  marcarComoRetirado() {
+    if (this.retiro) {
+      // Cambiar el estado_pedido del retiro a "Retirado" solo visualmente
+      this.retiro.estado_pedido = 'Retirado';
 
+      this.objetoService.actualizarRetiro(this.retiro);
+      console.log(this.retiro.estado_pedido)
+    }
   }
 
   volverPaginaAnterior() {

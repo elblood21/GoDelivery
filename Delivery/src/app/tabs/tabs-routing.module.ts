@@ -16,7 +16,7 @@ const routes: Routes = [
         loadChildren: () => import('../retiro/retiro.module').then( m => m.RetiroPageModule)
       },
       {
-        path: 'detalles-pedido',
+        path: 'detalles-pedido/:id',
         loadChildren: () => import('../retiro/detalles-pedido/detalles-pedido.module').then( m => m.DetallesPedidoPageModule)
       },
       {
@@ -24,7 +24,7 @@ const routes: Routes = [
         loadChildren: () => import('../entrega/entrega.module').then( m => m.EntregaPageModule)
       },
       {
-        path: 'detalle-entrega',
+        path: 'detalle-entrega/:id',
         loadChildren: () => import('../entrega/detalle-entrega/detalle-entrega.module').then( m => m.DetalleEntregaPageModule)
       },
       {

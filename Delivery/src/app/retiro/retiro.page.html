@@ -6,18 +6,18 @@
 
 <ion-content>
   <!-- Card contenedora-->
-  <ion-card *ngFor="let r of retiros">
+  <ion-card *ngFor="let retiro of retiros">
     <ion-card-header>
-      <ion-card-title>{{r.nombre_tienda}}</ion-card-title>
-      <ion-card-subtitle>Dirección retiro: {{r.direccion_tienda}}</ion-card-subtitle>
+      <ion-card-title>{{retiro.nombre_tienda}}</ion-card-title>
+      <ion-card-subtitle>ID Retiro: {{retiro.id}}</ion-card-subtitle>
+      <ion-card-subtitle>Dirección: {{retiro.direccion_tienda}}</ion-card-subtitle>
     </ion-card-header>
-  
     <ion-card-content>
-    Pedidos a retirar: {{r.numero_bultos}}
+    Pedidos a retirar: {{retiro.numero_bultos}}
     </ion-card-content>
   
     <ion-footer>
-      <ion-button fill="clear" class="abrir-button" [routerLink]="['/tabs/detalles-pedido']" (click)="goToDetalleEntregaPage(r)">Abrir</ion-button>
+      <ion-button fill="clear" class="abrir-button" [routerLink]="['/tabs/detalles-pedido',retiro.id]" >Abrir</ion-button>
     </ion-footer>
 
   </ion-card>

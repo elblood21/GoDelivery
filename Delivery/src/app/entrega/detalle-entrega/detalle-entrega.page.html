@@ -6,10 +6,10 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-card *ngIf="entrega">
     <ion-card-content>
       <div>
-      <p><strong>Nombre del Cliente: {{entrega.nombre_cliente}}</strong> </p>
+      <p><strong>Nombre del Cliente:{{entrega.nombre_cliente}}</strong> </p>
     </div>
     <div>
       <p><strong>ID de Entrega: {{entrega.id}}</strong> </p>
@@ -21,7 +21,7 @@
       <ion-label class="label-inline">Estado:</ion-label>
       <ion-select class="select-inline">
         <ion-select-option value="en-retiro">En Retiro</ion-select-option>
-        <ion-select-option deafult value="en-ruta">En Ruta</ion-select-option>
+        <ion-select-option value="en-ruta">En Ruta</ion-select-option>
         <ion-select-option value="entregado">Entregado</ion-select-option>
       </ion-select>
     </ion-card-content>

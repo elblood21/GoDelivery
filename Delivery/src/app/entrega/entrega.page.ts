@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
+import { ObjetoService } from '../service/objeto.service';
 
 
 @Component({
@@ -10,24 +11,20 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EntregaPage implements OnInit {
 
-  entrega: any;
+  entregas: any = [];
 
-  constructor(private navCtrl: NavController,private route: ActivatedRoute) { }
-
-  goToDetalleEntregaPage(entrega: any) {
-    this.navCtrl.navigateForward(['/tabs/detalle-entrega'], {
-      queryParams: { entrega: JSON.stringify(entrega) }
-    });
-    console.log(entrega);
-  }
+  constructor(private navCtrl: NavController,private route: ActivatedRoute,private objetoService : ObjetoService) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      const entregaParam = params['retiro']; // Cambiamos el nombre aquí
-      if (entregaParam) {
-        this.entrega = JSON.parse(entregaParam); // Almacenamos en una variable llamada "entrega"
-        console.log(this.entrega); // Mostramos "entrega" en la consola
-      }
-    });
-}
+    this.obtenerEntregasRetiradas(); // Llamar al método para obtener las entregas retiradas
+    this.objetoService
+      .obtenerRetirosRetiradosSubject()
+      .subscribe(() => this.obtenerEntregasRetiradas());
+  }
+
+  obtenerEntregasRetiradas() {
+    this.entregas = this.objetoService.obtenerRetirosRetirados();
+    console.log(this.entregas);
+  }
+  
 }

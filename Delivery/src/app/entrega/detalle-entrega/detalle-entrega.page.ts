@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ObjetoService } from '../../service/objeto.service';
 
 
 @Component({
@@ -11,16 +12,18 @@ export class DetalleEntregaPage implements OnInit {
 
   entrega: any;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,
+    private objetoService : ObjetoService
+    ) {
   }
 
 ngOnInit() {
-  this.route.queryParams.subscribe(params => {
-    const entregaParam = params['entrega'];
-    if (entregaParam) {
-      this.entrega = JSON.parse(entregaParam);
+  const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.entrega = this.objetoService.obtenerRetirosEntregaDetalle(id);
       console.log(this.entrega)
+    } else {
+      // Manejar el caso en el que 'id' es null, por ejemplo, mostrar un mensaje de error o redirigir a otra página.
     }
-  });
 }
 }

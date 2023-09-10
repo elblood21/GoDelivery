@@ -6,14 +6,13 @@
 
   <ion-content>
 
-    <div class="cuadro">
-      <ion-card class="card-content" [routerLink]="['/tabs/detalle-entrega']" (click)="goToDetalleEntregaPage(entrega)">
+    <div class="cuadro" *ngFor="let entrega of entregas" [class.retirado]="entrega.estado_pedido === 'Retirado'" [class.entregado]="entrega.estado_pedido === 'Entregado'">
+      <ion-card class="card-content" [routerLink]="['/tabs/detalle-entrega',entrega.id]">
         <ion-card-content>
-          <p>ID : {{entrega.id}}</p>
-          <p>Dirección : {{entrega.direccion}}</p>
-          <p>Comuna : {{entrega.comuna}}</p>
+          <ion-card-title>ID : {{entrega.id}} </ion-card-title>
+          <ion-card-subtitle> Dirección : {{entrega.direccion}}, {{entrega.comuna}}</ion-card-subtitle>
           <p>Nombre Cliente : {{entrega.nombre_cliente}}</p>
-          <p>Estado : {{entrega.estado}}</p>
+          <p>Estado : {{entrega.estado_pedido}}</p>
         </ion-card-content>
       </ion-card>
     </div>

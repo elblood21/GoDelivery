@@ -1,11 +1,21 @@
 .cuadro {
-    background-color: #000000; /* Color de fondo del cuadro */
-    
-  }
+  background-color: #000000; /* Color de fondo del cuadro */
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 40px; /* Borde blanco en los lados izquierdo y superior */
+
+}
+
+.retirado {
+  border-right: 30px solid rgb(255, 153, 1); /* Establece el color de borde para "No retirado" */
+}
+
+.entregado {
+  border-right: 30px solid green; /* Establece el color de borde para "Retirado" */
+}
 
 .card-content{
     border: none;
-    border-radius: 0px;
     box-shadow: none;
     background-color: #000000; /* Color de fondo del cuadro */
     color: white;
