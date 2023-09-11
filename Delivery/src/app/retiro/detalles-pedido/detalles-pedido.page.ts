@@ -18,6 +18,7 @@ export class DetallesPedidoPage implements OnInit {
     private objetoService : ObjetoService,
     private route: ActivatedRoute,
     private navCtrl: NavController,
+    private toastController: ToastController
   ) {}
 
   ngOnInit() {
@@ -42,6 +43,15 @@ export class DetallesPedidoPage implements OnInit {
       this.objetoService.actualizarRetiro(this.retiro);
       console.log(this.retiro.estado_pedido)
     }
+  }
+
+  async mostrarMensaje() {
+    const toast = await this.toastController.create({
+      message: 'Pedido cargado correctamente',
+      duration: 2000, // Duración en milisegundos
+      position: 'bottom' // Posición en la que aparecerá el mensaje
+    });
+    toast.present();
   }
 
   volverPaginaAnterior() {

@@ -19,10 +19,9 @@
       <p><strong>Cantidad de Bultos: {{entrega.numero_bultos}}</strong></p>
     </div>
       <ion-label class="label-inline">Estado:</ion-label>
-      <ion-select class="select-inline">
-        <ion-select-option value="en-retiro">En Retiro</ion-select-option>
-        <ion-select-option value="en-ruta">En Ruta</ion-select-option>
-        <ion-select-option value="entregado">Entregado</ion-select-option>
+      <ion-select class="select-inline" [(ngModel)]="estadoSeleccionado" (ionChange)="cambiarEstado()">
+        <ion-select-option value="En ruta">En Ruta</ion-select-option>
+        <ion-select-option value="Entregado">Entregado</ion-select-option>
       </ion-select>
     </ion-card-content>
   </ion-card>
@@ -34,7 +33,6 @@
   </div>
 
   <div class="button-confirmar">
-  <ion-button [routerLink]="['/tabs/confirmacion-entrega']">Confirmar Entrega</ion-button>
+  <ion-button [routerLink]="['/tabs/confirmacion-entrega',entrega.id]">Confirmar Entrega</ion-button>
 </div>
-
 </ion-content>

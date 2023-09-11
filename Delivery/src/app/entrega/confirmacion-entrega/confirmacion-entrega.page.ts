@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
+import { ObjetoService } from '../../service/objeto.service';
 
 @Component({
   selector: 'app-confirmacion-entrega',
@@ -10,10 +12,18 @@ export class ConfirmacionEntregaPage implements OnInit {
   rut: string = '';
   nombre: string = '';
   confirmarHabilitado: boolean = false;
+  entrega: any;
 
-  constructor(public alertController: AlertController) { }
+  constructor(public alertController: AlertController,private route: ActivatedRoute,private objetoService : ObjetoService) { }
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.entrega = this.objetoService.obtenerRetirosEntregaDetalle(id);
+      console.log(this.entrega)
+    } else {
+      // Manejar el caso en el que 'id' es null, por ejemplo, mostrar un mensaje de error o redirigir a otra página.
+    }
   }
 
   verificarCamposCompletados() {
@@ -36,12 +46,20 @@ export class ConfirmacionEntregaPage implements OnInit {
           text: 'Confirmar',
           handler: () => {
             console.log('Confirmación exitosa');
-            // Aquí puedes agregar la lógica que se ejecutará cuando se confirme.
+            this.marcarComoEntregado();
           }
         }
       ]
     });
-
     await alert.present();
+  }
+
+marcarComoEntregado() {
+  if (this.entrega) {
+    this.entrega.estado_pedido = 'Entregado';
+
+    this.objetoService.actualizarRetiro(this.entrega);
+    console.log(this.entrega.estado_pedido);
+  }
   }
 }

@@ -32,7 +32,7 @@ export class ObjetoService {
       direccion_tienda : 'Padre Mariano 356',
       comuna_tienda : 'Providencia',
       numero_bultos : '3',
-      estado_pedido: 'Retirado'
+      estado_pedido: 'No retirado'
     },
     {
       id: '30',
@@ -44,7 +44,7 @@ export class ObjetoService {
       direccion_tienda : 'Padre Mariano 356',
       comuna_tienda : 'Providencia',
       numero_bultos : '1',
-      estado_pedido: 'Entregado'
+      estado_pedido: 'No retirado'
     }
   ]
 

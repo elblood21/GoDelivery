@@ -28,7 +28,7 @@ const routes: Routes = [
         loadChildren: () => import('../entrega/detalle-entrega/detalle-entrega.module').then( m => m.DetalleEntregaPageModule)
       },
       {
-        path: 'confirmacion-entrega',
+        path: 'confirmacion-entrega/:id',
         loadChildren: () => import('../entrega/confirmacion-entrega/confirmacion-entrega.module').then( m => m.ConfirmacionEntregaPageModule)
       },
       {
