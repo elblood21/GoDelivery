@@ -48,7 +48,7 @@ export class DetallesPedidoPage implements OnInit {
   async mostrarMensaje() {
     const toast = await this.toastController.create({
       message: 'Pedido cargado correctamente',
-      duration: 2000, // Duración en milisegundos
+      duration: 1000, // Duración en milisegundos
       position: 'bottom' // Posición en la que aparecerá el mensaje
     });
     toast.present();

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { ObjetoService } from '../../service/objeto.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-confirmacion-entrega',
@@ -14,7 +15,7 @@ export class ConfirmacionEntregaPage implements OnInit {
   confirmarHabilitado: boolean = false;
   entrega: any;
 
-  constructor(public alertController: AlertController,private route: ActivatedRoute,private objetoService : ObjetoService) { }
+  constructor(public alertController: AlertController,private route: ActivatedRoute,private objetoService : ObjetoService,private router: Router) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -47,6 +48,7 @@ export class ConfirmacionEntregaPage implements OnInit {
           handler: () => {
             console.log('Confirmación exitosa');
             this.marcarComoEntregado();
+            this.router.navigate(['/tabs/entrega']);
           }
         }
       ]
