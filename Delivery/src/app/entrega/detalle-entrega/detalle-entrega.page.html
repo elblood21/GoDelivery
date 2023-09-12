@@ -12,14 +12,17 @@
       <p><strong>Nombre del Cliente:{{entrega.nombre_cliente}}</strong> </p>
     </div>
     <div>
+      <p><strong>Teléfono: {{entrega.telefono}}</strong> </p>
+    </div>
+    <div>
       <p><strong>ID de Entrega: {{entrega.id}}</strong> </p>
     </div>
       <p><strong>Dirección:{{entrega.direccion}}, {{entrega.comuna}} </strong> </p>
       <div>
       <p><strong>Cantidad de Bultos: {{entrega.numero_bultos}}</strong></p>
     </div>
-      <ion-label class="label-inline">Estado:</ion-label>
-      <ion-select class="select-inline" [(ngModel)]="estadoSeleccionado" (ionChange)="cambiarEstado()">
+      <ion-label class="label-inline">Estado: </ion-label>
+      <ion-select placeholder="{{entrega.estado_pedido}}" class="select-inline" [(ngModel)]="estadoSeleccionado" (ionChange)="cambiarEstado()">
         <ion-select-option value="En ruta">En Ruta</ion-select-option>
         <ion-select-option value="Entregado">Entregado</ion-select-option>
       </ion-select>
@@ -33,6 +36,6 @@
   </div>
 
   <div class="button-confirmar">
-  <ion-button [routerLink]="['/tabs/confirmacion-entrega',entrega.id]">Confirmar Entrega</ion-button>
+  <ion-button [routerLink]="['/tabs/confirmacion-entrega',entrega.id]" [disabled]="entrega.estado_pedido !== 'Entregado'">Confirmar Entrega</ion-button>
 </div>
 </ion-content>

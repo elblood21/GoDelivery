@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -10,6 +10,8 @@ import { NavController } from '@ionic/angular';
 })
 export class LoginPage {
 
+
+
   formularioLogin: FormGroup;
 
   userData = {
@@ -17,8 +19,6 @@ export class LoginPage {
     password: '',
     email: ''
   };
-
-  
 
   ngOnInit() {
     const storedUserDataString = localStorage.getItem('userData');
@@ -31,7 +31,7 @@ export class LoginPage {
     }
   }
 
-  constructor(public fb: FormBuilder, private navCtrl: NavController) {
+  constructor(public fb: FormBuilder, private navCtrl: NavController,private toastController: ToastController) {
     this.formularioLogin = this.fb.group({
       'email': ['', Validators.required], // Campo de correo electrónico
       'password': ['', Validators.required], // Campo de contraseña
@@ -56,10 +56,25 @@ export class LoginPage {
       } else {
         // Las credenciales no coinciden, muestra un mensaje de error
         console.log('Credenciales incorrectas.');
+        this.mostrarMensaje();
+        
       }
     } else {
       // No se encontraron datos de usuario en el LocalStorage
       console.log('La cuenta no existe.');
+      this.mostrarMensaje();
+      
     }
   }
+
+  async mostrarMensaje() {
+    const toast = await this.toastController.create({
+      message: 'La cuenta ingresada no es correcta',
+      duration: 1000, // Duración en milisegundos
+      position: 'bottom' // Posición en la que aparecerá el mensaje
+    });
+    toast.present();
+  }
 }
+
+
