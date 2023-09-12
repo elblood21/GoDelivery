@@ -29,7 +29,7 @@ ngOnInit() {
     }
     // this.estadoSeleccionado = this.entrega.estado_pedido;
     // console.log(this.estadoSeleccionado)
-    console.log('Hola')
+    console.log('Hola-Adios')
 }
 
 cambiarEstado() {
