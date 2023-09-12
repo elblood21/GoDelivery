@@ -1,7 +1,8 @@
 .image{
-    width: 35%;
+    width: 45%;
     margin: auto;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    align-items: center;
 }
 
 .formulario{
@@ -35,7 +36,7 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    border-bottom: 1px solid #363636;
+    border-bottom: 1px solid #444444;
 }
 
 .form .lbl-email:after{
@@ -78,4 +79,8 @@
 
 .formulario .registro{
     text-align: center;
+}
+
+.mmmm{
+    margin-top: 5px;
 }

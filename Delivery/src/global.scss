@@ -81,3 +81,15 @@ ion-card {
   margin-bottom: 10px;
   width: 100%;  // Ajusta el ancho del botón
 }
+
+.toolbar-background{
+  background-color: #ff6624 !important;
+}
+
+ion-toolbar{
+  --background: #ff6624;
+}
+
+.labelyinput{
+  color: white;
+}

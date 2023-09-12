@@ -54,7 +54,4 @@ export class DetallesPedidoPage implements OnInit {
     toast.present();
   }
 
-  volverPaginaAnterior() {
-    this.navCtrl.back();
-  }
 }
