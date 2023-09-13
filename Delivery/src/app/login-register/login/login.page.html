@@ -4,6 +4,10 @@
   </div>
   <div class="formulario">
     <form [formGroup]="formularioLogin" (ngSubmit)="login()">
+      <div class="titulo-subtitulo">
+      <h2>Bienvenido</h2>
+      <p>Hola! Un gusto volver a verte.</p>
+      </div>
       <ion-item>
         <ion-label class="labelyinput" position="floating">Email</ion-label>
         <ion-input class="labelyinput" formControlName="email" type="email"></ion-input>

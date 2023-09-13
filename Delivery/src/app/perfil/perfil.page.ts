@@ -18,6 +18,7 @@ export class PerfilPage implements OnInit {
 
     // Recupera el dato de 'username' del LocalStorage
     const userDataString = localStorage.getItem('userData');
+    
     if (userDataString !== null) {
       const userData = JSON.parse(userDataString);
       this.username = userData.username;
