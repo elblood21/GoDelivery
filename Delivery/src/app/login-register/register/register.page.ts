@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -22,10 +22,10 @@ export class RegisterPage implements OnInit {
   mostrarMensajeError3: boolean = false;
   confirmPassword: string = ''; // Nuevo campo para confirmar la contraseña
   
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController,private toastController: ToastController) { }
 
   ngOnInit() {
-
+    
   }
 
 
@@ -41,9 +41,12 @@ export class RegisterPage implements OnInit {
         if (this.userData.email.includes('@')) {
         // Guarda los datos en el LocalStorage
         localStorage.setItem('userData', JSON.stringify(this.userData));
-  
+          
         // Redirige a la página de inicio de sesión u otra página según tu flujo de la aplicación
-        this.navCtrl.navigateForward('/login'); // Cambia '/login' por la ruta correcta
+        this.mostrarMensajeRegistro()
+        this.navCtrl.navigateForward('/login');
+        const storedUserDataString = localStorage.getItem('userData');
+        console.log(storedUserDataString)
       } else {
         // Correo electrónico no válido, muestra un mensaje de error
         this.mostrarMensajeError3 = true;
@@ -58,6 +61,15 @@ export class RegisterPage implements OnInit {
       console.log('La contraseña debe tener al menos 6 caracteres.');
       
       }
+    }
+
+    async mostrarMensajeRegistro() {
+      const toast = await this.toastController.create({
+        message: 'Cuenta creada correctamente',
+        duration: 1000, // Duración en milisegundos
+        position: 'bottom' // Posición en la que aparecerá el mensaje
+      });
+      toast.present();
     }
   }
 

@@ -22,7 +22,7 @@ export class LoginPage {
 
   ngOnInit() {
     const storedUserDataString = localStorage.getItem('userData');
-
+    console.log(storedUserDataString)
     if (storedUserDataString) {
       const storedUserData = JSON.parse(storedUserDataString);
       console.log('Datos en localStorage:', storedUserData);
