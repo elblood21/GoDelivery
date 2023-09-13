@@ -10,6 +10,7 @@ ion-input {
   border-radius: 5px; /* Bordes redondeados */
   margin-bottom: 15px; /* Espacio entre campos de entrada */
   margin-top: 30px;
+  color: #fff;
 }
 
 
@@ -30,4 +31,8 @@ ion-title {
   margin-top: 1rem;
   margin-left: 75px;
   margin-right: 75px;
+}
+
+.mensajeError ion-label {
+  text-align: center;
 }

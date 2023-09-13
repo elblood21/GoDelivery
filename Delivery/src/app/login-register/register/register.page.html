@@ -23,6 +23,9 @@
       <ion-label position="floating" color="light">Correo electrónico</ion-label>
       <ion-input [(ngModel)]="userData.email" type="email"></ion-input>
     </ion-item>
+    <ion-button expand="full" (click)="register()">Registrar</ion-button>
+  </div>  
+  <div class="mensajeError">
     <ion-item *ngIf="mostrarMensajeError1">
       <ion-label color="danger">{{mensaje_error1}}</ion-label>
     </ion-item>
@@ -32,6 +35,5 @@
     <ion-item *ngIf="mostrarMensajeError3">
       <ion-label color="danger">{{mensaje_error3}}</ion-label>
     </ion-item>
-    <ion-button expand="full" (click)="register()">Registrar</ion-button>
   </div>  
 </ion-content>

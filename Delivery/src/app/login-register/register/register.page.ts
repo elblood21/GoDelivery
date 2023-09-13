@@ -15,7 +15,7 @@ export class RegisterPage implements OnInit {
   };
   
   mensaje_error1 : string = 'Contraseñas incorrectas';
-  mensaje_error2 : string = 'La contraseña debe tener al menos 6 caracteres.';
+  mensaje_error2 : string = 'Contraseña debe tener almenos 6 caracteres';
   mensaje_error3 : string = 'Ingrese un correo correcto';
   mostrarMensajeError1: boolean = false;
   mostrarMensajeError2: boolean = false;
