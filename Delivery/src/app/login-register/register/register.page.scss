@@ -1,16 +1,17 @@
 
-/* Estilo para el contenido */
+/* Estilo para el contenido 
 ion-content {
-  --ion-background-color: #f4f4f4; /* Color de fondo del contenido */
-}
+  --ion-background-color: #f4f4f4; 
+}*/
 
 /* Estilo para los campos de entrada */
 ion-input {
-  border: 1px solid #ccc; /* Borde de los campos de entrada */
+  border: 1px solid #e66d38; /* Borde de los campos de entrada */
   border-radius: 5px; /* Bordes redondeados */
   margin-bottom: 15px; /* Espacio entre campos de entrada */
   margin-top: 30px;
 }
+
 
 /* Estilo para el botón de registro */
 ion-button {
@@ -22,4 +23,11 @@ ion-button {
 /* Estilo para el título de la página */
 ion-title {
   font-weight: bold; /* Texto en negrita */
+  color: #fff;
+}
+
+.formulario{
+  margin-top: 1rem;
+  margin-left: 75px;
+  margin-right: 75px;
 }

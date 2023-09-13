@@ -6,21 +6,21 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <div class="formulario">
     <ion-item>
-      <ion-label position="floating">Nombre de usuario</ion-label>
+      <ion-label position="floating" color="light">Nombre de usuario</ion-label>
       <ion-input [(ngModel)]="userData.username" type="text"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
+      <ion-label position="floating" color="light">Contraseña</ion-label>
       <ion-input [(ngModel)]="userData.password" type="password"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Confirmar Contraseña</ion-label>
+      <ion-label position="floating" color="light">Confirmar Contraseña</ion-label>
       <ion-input [(ngModel)]="confirmPassword" type="password"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-label position="floating" color="light">Correo electrónico</ion-label>
       <ion-input [(ngModel)]="userData.email" type="email"></ion-input>
     </ion-item>
     <ion-item *ngIf="mostrarMensajeError1">
@@ -32,6 +32,6 @@
     <ion-item *ngIf="mostrarMensajeError3">
       <ion-label color="danger">{{mensaje_error3}}</ion-label>
     </ion-item>
-  </ion-list>
-  <ion-button expand="full" (click)="register()">Registrar</ion-button>
+    <ion-button expand="full" (click)="register()">Registrar</ion-button>
+  </div>  
 </ion-content>
