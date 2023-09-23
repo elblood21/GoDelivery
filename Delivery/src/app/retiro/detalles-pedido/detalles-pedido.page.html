@@ -18,7 +18,7 @@
         Hora retiro: {{horaCarga}} <br>
         Estado: {{retiro.estado_pedido}}
       </ion-card-content>
-      <ion-footer>
+      <ion-footer *ngIf="retiro.estado_pedido == 'No retirado'">
         <ion-button fill="clear"  class="realizar-retiro-button" (click)="marcarComoRetirado()" (click)="mostrarMensaje()">Realizar Retiro</ion-button>
       </ion-footer>
     </ion-card>

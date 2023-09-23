@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { NavController, ToastController } from '@ionic/angular';
+import { ObjetoService } from 'src/app/service/objeto.service';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class LoginPage {
     }
   }
 
-  constructor(public fb: FormBuilder, private navCtrl: NavController,private toastController: ToastController) {
+  constructor(public fb: FormBuilder, private navCtrl: NavController,private toastController: ToastController,private objetoService:ObjetoService) {
     this.formularioLogin = this.fb.group({
       'email': ['', Validators.required], // Campo de correo electrónico
       'password': ['', Validators.required], // Campo de contraseña
@@ -39,42 +40,15 @@ export class LoginPage {
   }
 
 
-  login() {
-    // Recupera los datos almacenados en el LocalStorage
-    const storedUserDataString = localStorage.getItem('userData');
+  async login() {
 
-    if (storedUserDataString) {
-      const storedUserData = JSON.parse(storedUserDataString);
-
-      // Verifica si el nombre de usuario y la contraseña coinciden
-      if (
-        this.formularioLogin.value.email === storedUserData.email &&
-        this.formularioLogin.value.password === storedUserData.password
-      ) {
-        // Inicio de sesión exitoso, redirige a la página principal
-        this.navCtrl.navigateForward('/tabs/inicio'); // Cambia '/home' por la ruta correcta
-      } else {
-        // Las credenciales no coinciden, muestra un mensaje de error
-        console.log('Credenciales incorrectas.');
-        this.mostrarMensaje();
-        
-      }
-    } else {
-      // No se encontraron datos de usuario en el LocalStorage
-      console.log('La cuenta no existe.');
-      this.mostrarMensaje();
-      
+    var response = await this.objetoService.login(this.formularioLogin.value);
+    if(response.value) {
+      localStorage.setItem('userData', JSON.stringify(response.user));
+      this.navCtrl.navigateForward('/tabs/inicio');
     }
   }
 
-  async mostrarMensaje() {
-    const toast = await this.toastController.create({
-      message: 'La cuenta ingresada no es correcta',
-      duration: 1000, // Duración en milisegundos
-      position: 'bottom' // Posición en la que aparecerá el mensaje
-    });
-    toast.present();
-  }
 }
 
 

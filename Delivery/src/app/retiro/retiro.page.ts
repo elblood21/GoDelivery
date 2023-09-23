@@ -13,9 +13,9 @@ export class RetiroPage {
 
   constructor(private navCtrl: NavController,private objetoService : ObjetoService) {}
 
-  ngOnInit() {
-    this.retiros = this.objetoService.obtenerRetirosEntrega()
-    console.log(this.retiros)
+  async ionViewWillEnter() {
+    this.retiros = await this.objetoService.obtenerRetirosEntrega()
+    console.log(await this.retiros)
   }
 
 }

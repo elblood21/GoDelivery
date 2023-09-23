@@ -10,7 +10,29 @@ import { ObjetoService } from '../../service/objeto.service';
 })
 export class DetalleEntregaPage implements OnInit {
 
-  entrega: any;
+  entrega: {
+    id:number,
+    direccion : string,
+    numero : string,
+    comuna : string,
+    nombre_cliente : string,
+    telefono : string,
+    nombre_tienda : string,
+    direccion_tienda : string,
+    numero_bultos: number,
+    estado_pedido: string
+  } = {
+    id:0,
+    direccion : "",
+    numero : "",
+    comuna : "",
+    nombre_cliente : "",
+    telefono : "",
+    nombre_tienda : "",
+    direccion_tienda : "",
+    numero_bultos: 0,
+    estado_pedido: ""
+  };
   estadoSeleccionado: string = '';
   
 
@@ -19,11 +41,13 @@ export class DetalleEntregaPage implements OnInit {
     ) {
   }
 
-ngOnInit() {
-  const id = this.route.snapshot.paramMap.get('id');
+  ngOnInit() { }
+
+  async ionViewWillEnter() {
+    const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.entrega = this.objetoService.obtenerRetirosEntregaDetalle(id);
-      console.log(this.entrega)
+      this.entrega = await this.objetoService.obtenerRetirosEntregaDetalle(id);
+      console.log(await this.entrega)
     } else {
       // Manejar el caso en el que 'id' es null, por ejemplo, mostrar un mensaje de error o redirigir a otra página.
     }

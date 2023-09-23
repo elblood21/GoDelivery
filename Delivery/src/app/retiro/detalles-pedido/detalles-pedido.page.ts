@@ -20,12 +20,15 @@ export class DetallesPedidoPage implements OnInit {
     private navCtrl: NavController,
     private toastController: ToastController
   ) {}
-
   ngOnInit() {
+
+  }
+
+  async ionViewWillEnter() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.retiro = this.objetoService.obtenerRetirosEntregaDetalle(id);
-      console.log(this.retiro)
+      this.retiro = await this.objetoService.obtenerRetirosEntregaDetalle(id);
+      console.log(await this.retiro)
     } else {
       // Manejar el caso en el que 'id' es null, por ejemplo, mostrar un mensaje de error o redirigir a otra página.
     }

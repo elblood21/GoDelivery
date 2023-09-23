@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
+import { ObjetoService } from 'src/app/service/objeto.service';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +23,7 @@ export class RegisterPage implements OnInit {
   mostrarMensajeError3: boolean = false;
   confirmPassword: string = ''; // Nuevo campo para confirmar la contraseña
   
-  constructor(private navCtrl: NavController,private toastController: ToastController) { }
+  constructor(private navCtrl: NavController,private toastController: ToastController,private objetoService:ObjetoService) { }
 
   ngOnInit() {
     
@@ -40,13 +41,12 @@ export class RegisterPage implements OnInit {
         // Contraseña y confirmación coinciden, procede con el registro
         if (this.userData.email.includes('@')) {
         // Guarda los datos en el LocalStorage
-        localStorage.setItem('userData', JSON.stringify(this.userData));
+
+        this.objetoService.registerUsuario(this.userData);
           
         // Redirige a la página de inicio de sesión u otra página según tu flujo de la aplicación
         this.mostrarMensajeRegistro()
         this.navCtrl.navigateForward('/login');
-        const storedUserDataString = localStorage.getItem('userData');
-        console.log(storedUserDataString)
       } else {
         // Correo electrónico no válido, muestra un mensaje de error
         this.mostrarMensajeError3 = true;

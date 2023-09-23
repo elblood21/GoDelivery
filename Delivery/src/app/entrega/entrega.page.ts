@@ -16,14 +16,15 @@ export class EntregaPage implements OnInit {
   constructor(private navCtrl: NavController,private route: ActivatedRoute,private objetoService : ObjetoService) { }
 
   ngOnInit() {
-    this.obtenerEntregasRetiradas(); // Llamar al método para obtener las entregas retiradas
-    this.objetoService
-      .obtenerRetirosRetiradosSubject()
-      .subscribe(() => this.obtenerEntregasRetiradas());
+    
   }
 
-  obtenerEntregasRetiradas() {
-    this.entregas = this.objetoService.obtenerRetirosRetirados();
+  ionViewWillEnter() {
+    this.obtenerEntregasRetiradas();
+  }
+
+  async obtenerEntregasRetiradas() {
+    this.entregas = await this.objetoService.obtenerRetirosRetirados();
     console.log(this.entregas);
   }
   

@@ -13,8 +13,9 @@ export class PerfilPage implements OnInit {
 
   constructor(public alertControler: AlertController,private navCtrl: NavController) { }
   
+  ngOnInit() {}
 
-  ngOnInit() {
+  ionViewWillEnter() {
 
     // Recupera el dato de 'username' del LocalStorage
     const userDataString = localStorage.getItem('userData');
